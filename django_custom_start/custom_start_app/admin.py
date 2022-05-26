@@ -5,7 +5,7 @@ from .forms import UserChangeForm, UserCreationForm
 from .models import User,image_test
 
 
-#admin.site.register(image_test)
+admin.site.register(image_test)
 
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
