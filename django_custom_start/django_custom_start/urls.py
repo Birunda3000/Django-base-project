@@ -19,9 +19,12 @@ from django.urls import path
 from django.conf.urls.static import static
 from django_custom_start import settings
 
+from custom_start_app.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home),
 ]
 
 if settings.DEBUG:
