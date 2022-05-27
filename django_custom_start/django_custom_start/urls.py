@@ -21,10 +21,12 @@ from django_custom_start import settings
 
 from custom_start_app.views import *
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home),
+    path('admin/', admin.site.urls, name='url_adm'),
+    path('', home, name='url_home'),
+    path('create/', create, name='url_create'),
+    path('update/<int:pk>', update, name='url_update'),
+    path('delete/<int:pk>', delete, name='url_delete'),
 ]
 
 if settings.DEBUG:

@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from .forms import *
 import datetime
+from .models import *
 # Create your views here.
 
 '''def home(request):
@@ -9,5 +11,34 @@ import datetime
     return HttpResponse(html)'''
 
 def home(request):
+    data = {}
+    data['image_test_objects'] = image_test.objects.all()
+    return render(request, 'custom_start_app/home.html', data)
 
-    return render(request, 'custom_start_app/home.html')
+def create(request):
+    data = {}
+    form = image_testForm(request.POST or None)
+    data['form'] = form
+    if form.is_valid():
+        form.save()
+        return redirect('url_home')
+    return render(request, 'custom_start_app/create.html', data)
+
+def update(request, pk):
+    object_to_update = image_test.objects.get(pk=pk)
+    form = image_testForm(request.POST or None, instance=object_to_update)
+
+    data = {}
+    
+    data['form'] = form
+    data['obj'] = object_to_update
+
+    if form.is_valid():
+        form.save()
+        return redirect('url_home')
+    return render(request, 'custom_start_app/create.html', data)
+
+def delete(request, pk):
+    object_to_update = image_test.objects.get(pk=pk)
+    object_to_update.delete()
+    return redirect('url_home')
