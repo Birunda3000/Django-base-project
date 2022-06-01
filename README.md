@@ -1,4 +1,4 @@
 # Django base project
  Projeto django personalizado base  
-User: admin
+User: admin  
 Senha: admin
