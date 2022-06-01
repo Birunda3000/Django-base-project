@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #django_inclu
+    "django.contrib.sites",    
+    #inclued
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "crispy_forms",
+    #local
     'custom_start_app',#created
 ]
 
@@ -114,22 +122,28 @@ USE_TZ = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 STATIC_URL = 'static/'
-
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-
 
 # User model
 AUTH_USER_MODEL = 'custom_start_app.User'
 
-# django-allauth
+# django-allauth -> login
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
+
+#
+'''Quando um usuário se cadastrar ele deverá receber um e-mail de confirmação. Com o código acima, o e-mail será exibido no terminal. Para desenvolvimento local isso é ótimo, em produção é necessário fazer a configuração de envio de e-mail.'''
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
