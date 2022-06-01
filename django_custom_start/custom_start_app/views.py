@@ -4,7 +4,6 @@ from .forms import *
 import datetime
 from .models import *
 
-
 # Create your views here.
 
 '''def home(request):
@@ -20,24 +19,18 @@ def home(request):
 def create(request):
     data = {}
     form = image_testForm(data=request.POST or None, files=request.FILES or None)
-
     if form.is_valid():
         form.save()
-        return redirect('url_home')
-    
+        return redirect('url_home')   
     data['form'] = form    
     return render(request, 'custom_start_app/create.html', data)
-
 
 def update(request, pk):
     object_to_update = image_test.objects.get(pk=pk)
     form = image_testForm(request.POST or None, instance=object_to_update)
-
-    data = {}
-    
+    data = {}   
     data['form'] = form
     data['obj'] = object_to_update
-
     if form.is_valid():
         form.save()
         return redirect('url_home')
@@ -47,3 +40,7 @@ def delete(request, pk):
     object_to_update = image_test.objects.get(pk=pk)
     object_to_update.delete()
     return redirect('url_home')
+
+def profile(request):
+
+    return render(request,'custom_start_app/profile.html')

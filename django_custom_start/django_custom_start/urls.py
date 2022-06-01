@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='url_adm'),
     #user
     path("accounts/", include("allauth.urls")),
+    path("accounts/profile/", profile, name='url_profile'),
     #local
     path('', home, name='url_home'),
     path('create/', create, name='url_create'),
