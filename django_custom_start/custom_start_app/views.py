@@ -29,8 +29,6 @@ def create(request):
     return render(request, 'custom_start_app/create.html', data)
 
 
-
-
 def update(request, pk):
     object_to_update = image_test.objects.get(pk=pk)
     form = image_testForm(request.POST or None, instance=object_to_update)

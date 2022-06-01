@@ -3,7 +3,9 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
+<br>
+<a href="{% url 'url_create' %}">Create</a>
+<br>
 <ul>
     {% for dado in image_test_objects %}
         <li>
@@ -17,5 +19,5 @@
         </li>
     {% endfor %}
 </ul>
-<a href="{% url 'url_create' %}">Create</a>
+
 {% endblock %}
