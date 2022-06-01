@@ -4,7 +4,6 @@ from .forms import *
 import datetime
 from .models import *
 
-
 # Create your views here.
 
 '''def home(request):
