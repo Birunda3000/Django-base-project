@@ -3,5 +3,6 @@
 * Usuario padrão do django extendido
 * CRUD ja implementado
 * Sistema de cadastro login e logout
-User: admin  
-Senha: admin
+* Superusuario
+  * User: admin  
+  * Senha: admin
